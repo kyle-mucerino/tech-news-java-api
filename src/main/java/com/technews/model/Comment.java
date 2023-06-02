@@ -1,16 +1,16 @@
 package com.technews.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializaer", "handler"})
 @Table(name = "comment")
 public class Comment implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -20,7 +20,6 @@ public class Comment implements Serializable {
 
     public Comment() {
     }
-
     public Comment(Integer id, String commentText, Integer userId, Integer postId) {
         this.id = id;
         this.commentText = commentText;
@@ -69,11 +68,6 @@ public class Comment implements Serializable {
                 Objects.equals(getCommentText(), comment.getCommentText()) &&
                 Objects.equals(getUserId(), comment.getUserId()) &&
                 Objects.equals(getPostId(), comment.getPostId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getCommentText(), getUserId(), getPostId());
     }
 
     @Override
